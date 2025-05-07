@@ -81,13 +81,13 @@
       <div class="wraper" style="height:600px;">
         <div id="side_nav_main" class="bg-dark w-100 height_50px">
           <div class="m-auto d-flex justify-content-start align-items-center p-2" style="max-width:fit-content;">
-            <div class="nav_item btn btn-outline-light btn-sm rounded mr-1" id="">Sqaures</div>
-            <div class="nav_item btn btn-outline-light btn-sm rounded" id="">Objects</div>
+            <div class="nav_item btn btn-outline-light btn-sm rounded mr-1 aside_link" data-target="#sqaures_pickup">Tiles</div>
+            <div class="nav_item btn btn-outline-light btn-sm rounded aside_link" data-target="#objects_pickup">Objects</div>
           </div>
         </div>
         <div id="side_pages" class="height_550px">
-            <div id="sqaures_pickup" class="w-100 h-100 p-3 border border-secondary h-100">Sqaures Images</div>
-            <div id="objects_pickup" class="w-100 h-100 p-3" style="display:none;">Objects Images</div>
+            <div id="sqaures_pickup" class="w-100 h-100 p-3 border border-secondary h-100 aside_page">Tiles Images</div>
+            <div id="objects_pickup" class="w-100 h-100 p-3 aside_page" style="display:none;">Objects Images</div>
         </div>
       </div>
     </div>
@@ -127,7 +127,7 @@ class MapMaker {
             throw 'Error Invalid mapSqaures code updated...';
         }
     }
-	getMapData() {
+	setMapData() {
 		const data = {};
 		let initW = (this.canvasElm.length) ? parseFloat(this.canvasElm.width()) : null;
 		let initH = (this.canvasElm.length) ? parseFloat(this.canvasElm.height()) : null;
@@ -142,24 +142,28 @@ class MapMaker {
 			data['heightNeedFix'] = (data['h'] === initH) ? false : true;
 			data['rowCellsCount'] = (data['w'] / this.cSize);
 			data['rowsCount'] = (data['h'] / this.cSize);
+            
+            this.canvasWidth = data.w;
+		    this.canvasHeight = data.h;
+            this.rowsCount = data.rowsCount;
+            this.rowCellsCount = data.rowCellsCount;
 			return data;
 		} else {
 			throw `Please provide valid args selector of canvas and numberic size of cell, selector->${selector} - cSize->${cSize}`;
 		}
 	}
 	initMap() {
-		const mapData = this.getMapData();
+		const mapData = this.setMapData();
 		((mapData.widthNeedFix) ? console.log(`updated width abit smaller ${mapData.w}`) : null);
 		((mapData.heightNeedFix) ? console.log(`updated height abit smaller ${mapData.h}`) : null);
 
 		/* as init the width and height will set by js, also if width was nice no change */
-		this.canvasElm[0].width = mapData.w;
-		this.canvasElm[0].height = mapData.h;
-		const w = mapData.w;
-		const h = mapData.h;
-		const ctx = mapData.ctx;
-		for (let r = 0; r < mapData.rowsCount; r++) {
-			for (let c = 0; c < mapData.rowCellsCount; c++) {
+
+        
+		this.canvasElm[0].width = this.canvasWidth;
+		this.canvasElm[0].height = this.canvasHeight;
+		for (let r = 0; r < this.rowsCount; r++) {
+			for (let c = 0; c < this.rowCellsCount; c++) {
 				const cellStartX = (this.cSize * c);
 				const cellStartY = (this.cSize * r);
 				this.ctx.rect(cellStartX, cellStartY, this.cSize, this.cSize);
@@ -167,8 +171,22 @@ class MapMaker {
 		}
 		/* one time draw after all added (DocumentFragment algo)*/
 		this.ctx.stroke();
+        console.log(`cells are ${this.rowCellsCount}`);
 	}
+    displayAsidePage(e) {
+       const clickedLink = ((e && e.currentTarget) ? $(e.currentTarget) : []);
+       if (clickedLink.length && clickedLink.attr('data-target')) {
+           const target = $(clickedLink.attr('data-target')); 
+           if (target.length) {
+              $("#side_pages .aside_page").hide();
+              target.show();
+           }
+       }
+    }
     addEvents() {
+        $("#side_nav_main .aside_link").on('click', (e)=>{
+           this.displayAsidePage(e);
+        });
         $(window).on('resize', ()=>{
            this.initMap();
         });
