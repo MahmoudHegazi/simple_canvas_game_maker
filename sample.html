@@ -7,6 +7,58 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+  const mapSquaresJSONDB = [
+    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Cobbled_Pavement.gif?raw=true",
+    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Cobblestone.gif?raw=true",
+    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Dirt_(Heavy).gif?raw=true",
+    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Dirt_(Light).gif?raw=true",
+    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Dirt_(Medium).gif?raw=true",
+    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Drawbridge.gif?raw=true",
+    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Dried_Grass.gif?raw=true",
+    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Dry_Earth_(Zao).gif?raw=true",
+    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Earth_(Cracked).gif?raw=true",
+    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Earth_Ground.gif?raw=true",
+    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Earth_Hole.gif?raw=true",
+    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Ghostly_Water.gif?raw=true",
+    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Grass_(Tile).gif?raw=true",
+    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Gravel.gif?raw=true",
+    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Hole_(Rock).gif?raw=true",
+    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Jungle_Grass_(Tile).gif?raw=true",
+    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Large_Hole.gif?raw=true",
+    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Lava.gif?raw=true",
+    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Lava_(Oasis_Tomb).gif?raw=true",
+    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Loose_Board.gif?raw=true",
+    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Lush_Grass.gif?raw=true",
+    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Marble_Floor_(Rathleton).gif?raw=true",
+    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Muddy_Floor_(Dark).gif?raw=true",
+    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Muddy_Floor_(Light).gif?raw=true",
+    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Rock.gif?raw=true",
+    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Sand.gif?raw=true",
+    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Sandstone_Floor.gif?raw=true",
+    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Sewer_Grate.gif?raw=true",
+    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Snow.gif?raw=true",
+    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Some_Cracks_(Hole).gif?raw=true",
+    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Stairs_(Down).gif?raw=true",
+    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Stone_(Big).gif?raw=true",
+    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Stone_(Long).gif?raw=true",
+    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Stone_(Long_Big).gif?raw=true",
+    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Stone_(Medium).gif?raw=true",
+    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Stone_(Normal).gif?raw=true",
+    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Strange_Carving_(Tile).gif?raw=true",
+    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Strange_Symbols_(Venore_I).gif?raw=true",
+    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Strange_Symbols_(Venore_II).gif?raw=true",
+    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Strange_Symbols_(Venore_III).gif?raw=true",
+    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Sulphur.gif?raw=true",
+    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Swamp.gif?raw=true",
+    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Swamp_(Diggable).gif?raw=true",
+    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Terracotta.gif?raw=true",
+    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Trapdoor.gif?raw=true",
+    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Water_(Tile).gif?raw=true",
+    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Wooden_Floor.gif?raw=true",
+    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Wooden_Floor_(Docks).gif?raw=true"
+];
+  </script>
   <style>
      * {
         box-sizing: border-box;
@@ -15,77 +67,118 @@
         width: 100% !important;
         height: 100% !important;
      }
+     .wraper { height: 600px !important; }
+     .height_50px { height: 50px !important; }
+     .height_550px { height: 550px !important; }
   </style>
   
 </head>
 <body>
 
-<div class="container-fluid w-100 h-100 p-0">
+<div class="container-fluid w-100 p-0 m-0">
   <div class="row w-100 h-100 m-0 p-0">
     <div class="col-sm-4 h-100 border border-secondary p-0 m-0">
-      <h3>Column 1</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+      <div class="wraper" style="height:600px;">
+        <div id="side_nav_main" class="bg-dark w-100 height_50px">
+          <div class="m-auto d-flex justify-content-start align-items-center p-2" style="max-width:fit-content;">
+            <div class="nav_item btn btn-outline-light btn-sm rounded mr-1" id="">Sqaures</div>
+            <div class="nav_item btn btn-outline-light btn-sm rounded" id="">Objects</div>
+          </div>
+        </div>
+        <div id="side_pages" class="height_550px">
+            <div id="sqaures_pickup" class="w-100 h-100 p-3 border border-secondary h-100">Sqaures Images</div>
+            <div id="objects_pickup" class="w-100 h-100 p-3" style="display:none;">Objects Images</div>
+        </div>
+      </div>
     </div>
-    <div class="col-sm-8 h-100 border border-secondary p-0 m-0">
-        <canvas id="myCanvas" style="width:100%;height:100%;border: 1px solid black;">
-        Sorry, your browser does not support canvas.
-        </canvas>
+    <div class="col-sm-8 border border-secondary p-0 m-0">
+      <div class="wraper">
+        <canvas id="myCanvas" style="width:100%;height:100%;"> Sorry, your browser does not support canvas. </canvas>
+      </div>
     </div>
   </div>
 </div>
 
 <script>
 
-function getMapData(selector, cSize=25) {
-    const data = {};
-    const canvasElm = (selector) ? $(selector) : [];
-    let initW = (canvasElm.length) ? parseFloat(canvasElm.width()) : null;
-    let initH = (canvasElm.length) ? parseFloat(canvasElm.height()) : null;
-    
-    if (canvasElm.length && !isNaN(parseFloat(initW)) && !isNaN(parseFloat(initH)) && !isNaN(parseFloat(cSize))) {
-        cSize = parseFloat(cSize);
-        const rightWMax = (initW-(initW%cSize));
-        const rightHMax = (initH-(initH%cSize));
-
-        data['w'] = (rightWMax === initW) ? initW : rightWMax;
-        data['h'] = (rightHMax === initH) ? initH : rightHMax;
-        data['widthNeedFix'] = (data['w'] === initW) ? false : true;
-        data['heightNeedFix'] = (data['h'] === initH) ? false : true;
-        data['rowCellsCount'] = (data['w'] / cSize);
-        data['rowsCount'] = (data['h'] / cSize);
-        data['canvas'] = canvasElm;
-        data['ctx'] = data['canvas'][0].getContext("2d");
-        return data;
-    } else {
-        throw `Please provide valid args selector of canvas and numberic size of cell, selector->${selector} - cSize->${cSize}`;
+class MapMaker {    
+	constructor(selector, cSize = 25, mapSqaures = []) {
+        const canvasElm = (selector) ? $(selector) : [];
+        if (canvasElm.length && !isNaN(parseFloat(cSize)) && Array.isArray(mapSqaures)) {
+            this.selector = selector;
+            this.cSize = parseFloat(cSize);
+            this.canvasElm = canvasElm;
+            this.ctx = this.canvasElm[0].getContext('2d');
+            this.mapSqaures = mapSqaures;
+            this.initMap();
+            this.addEvents();            
+        } else {
+            throw 'Please  provide valid selector and numberic cSize and valid array of sqaures images';
+        }
+	}
+    get mapSquares() {
+        return this._mapSquares;
     }
+    
+    set mapSquares(mapSqaures) {
+        if (Array.isArray(mapSqaures)) {
+            this._mapSqaures = Array.from(mapSqaures.filter((x)=>(typeof(x) === 'string' && x.trim() !== '')));
+        } else {
+            throw 'Error Invalid mapSqaures code updated...';
+        }
+    }
+	getMapData() {
+		const data = {};
+		let initW = (this.canvasElm.length) ? parseFloat(this.canvasElm.width()) : null;
+		let initH = (this.canvasElm.length) ? parseFloat(this.canvasElm.height()) : null;
+
+		if (!isNaN(parseFloat(initW)) && !isNaN(parseFloat(initH)) && !isNaN(parseFloat(this.cSize))) {
+			const rightWMax = (initW - (initW % this.cSize));
+			const rightHMax = (initH - (initH % this.cSize));
+
+			data['w'] = (rightWMax === initW) ? initW : rightWMax;
+			data['h'] = (rightHMax === initH) ? initH : rightHMax;
+			data['widthNeedFix'] = (data['w'] === initW) ? false : true;
+			data['heightNeedFix'] = (data['h'] === initH) ? false : true;
+			data['rowCellsCount'] = (data['w'] / this.cSize);
+			data['rowsCount'] = (data['h'] / this.cSize);
+			return data;
+		} else {
+			throw `Please provide valid args selector of canvas and numberic size of cell, selector->${selector} - cSize->${cSize}`;
+		}
+	}
+	initMap() {
+		const mapData = this.getMapData();
+		((mapData.widthNeedFix) ? console.log(`updated width abit smaller ${mapData.w}`) : null);
+		((mapData.heightNeedFix) ? console.log(`updated height abit smaller ${mapData.h}`) : null);
+
+		/* as init the width and height will set by js, also if width was nice no change */
+		this.canvasElm[0].width = mapData.w;
+		this.canvasElm[0].height = mapData.h;
+		const w = mapData.w;
+		const h = mapData.h;
+		const ctx = mapData.ctx;
+		for (let r = 0; r < mapData.rowsCount; r++) {
+			for (let c = 0; c < mapData.rowCellsCount; c++) {
+				const cellStartX = (this.cSize * c);
+				const cellStartY = (this.cSize * r);
+				this.ctx.rect(cellStartX, cellStartY, this.cSize, this.cSize);
+			}
+		}
+		/* one time draw after all added (DocumentFragment algo)*/
+		this.ctx.stroke();
+	}
+    addEvents() {
+        $(window).on('resize', ()=>{
+           this.initMap();
+        });
+    }
+
 }
 
-function initMap(selector, cSize) {
-   const mapData = getMapData(selector, cSize);
-   ((mapData.widthNeedFix) ? console.log(`updated width abit smaller ${mapData.w}`) : null);
-   ((mapData.heightNeedFix) ? console.log(`updated height abit smaller ${mapData.h}`) : null);
-   
-   /* as init the width and height will set by js, also if width was nice no change */
-   mapData.canvas[0].width = mapData.w;
-   mapData.canvas[0].height = mapData.h;
-   const w = mapData.w;
-   const h = mapData.h;
-   const ctx = mapData.ctx;
-   for (let r=0; r<mapData.rowsCount; r++) {
-       for (let c=0; c<mapData.rowCellsCount; c++) {
-          const cellStartX = (cSize * c);
-          const cellStartY = (cSize * r);
-          ctx.rect(cellStartX, cellStartY, cSize, cSize);
-       }
-   }
-   /* one time draw after all added (DocumentFragment algo)*/
-   ctx.stroke();
-}
-initMap("#myCanvas", 40);
 
-$(window).on('resize', ()=>{initMap("#myCanvas", 40);});
+new MapMaker("#myCanvas", 40, mapSquaresJSONDB);
+
 </script>
 
 </body>
