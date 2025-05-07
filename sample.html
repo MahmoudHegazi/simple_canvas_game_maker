@@ -8,7 +8,10 @@
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-  const mapSquaresJSONDB = [
+
+    
+const dbData = {
+   tiles: [
     "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Cobbled_Pavement.gif?raw=true",
     "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Cobblestone.gif?raw=true",
     "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Dirt_(Heavy).gif?raw=true",
@@ -22,10 +25,7 @@
     "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Earth_Hole.gif?raw=true",
     "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Ghostly_Water.gif?raw=true",
     "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Grass_(Tile).gif?raw=true",
-    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Gravel.gif?raw=true",
-    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Hole_(Rock).gif?raw=true",
-    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Jungle_Grass_(Tile).gif?raw=true",
-    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Large_Hole.gif?raw=true",
+    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Gravel.gif?raw=true",  "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Jungle_Grass_(Tile).gif?raw=true",    
     "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Lava.gif?raw=true",
     "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Lava_(Oasis_Tomb).gif?raw=true",
     "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Loose_Board.gif?raw=true",
@@ -38,7 +38,16 @@
     "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Sandstone_Floor.gif?raw=true",
     "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Sewer_Grate.gif?raw=true",
     "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Snow.gif?raw=true",
-    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Some_Cracks_(Hole).gif?raw=true",
+    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Sulphur.gif?raw=true",
+    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Swamp.gif?raw=true",
+    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Swamp_(Diggable).gif?raw=true",
+    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Terracotta.gif?raw=true",
+    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Trapdoor.gif?raw=true",
+    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Water_(Tile).gif?raw=true",
+    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Wooden_Floor.gif?raw=true",
+    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Wooden_Floor_(Docks).gif?raw=true"
+],
+    objects:["https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Some_Cracks_(Hole).gif?raw=true",
     "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Stairs_(Down).gif?raw=true",
     "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Stone_(Big).gif?raw=true",
     "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Stone_(Long).gif?raw=true",
@@ -49,17 +58,17 @@
     "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Strange_Symbols_(Venore_I).gif?raw=true",
     "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Strange_Symbols_(Venore_II).gif?raw=true",
     "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Strange_Symbols_(Venore_III).gif?raw=true",
-    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Sulphur.gif?raw=true",
-    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Swamp.gif?raw=true",
-    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Swamp_(Diggable).gif?raw=true",
-    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Terracotta.gif?raw=true",
-    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Trapdoor.gif?raw=true",
-    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Water_(Tile).gif?raw=true",
-    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Wooden_Floor.gif?raw=true",
-    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Wooden_Floor_(Docks).gif?raw=true"
-];
+    "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Large_Hole.gif?raw=true",  "https://github.com/MahmoudHegazi/simple_canvas_game_maker/blob/main/images/Hole_(Rock).gif?raw=true",
+    ]
+};
   </script>
   <style>
+     :root {
+        --wraper-h: 620px;
+        --wraper-nav-height: 50px;
+        --wraper-min: calc(var(--wraper-h) - var(--wraper-nav-height));
+        --wraper-max: var(--wraper-h);
+     }
      * {
         box-sizing: border-box;
      }
@@ -67,32 +76,47 @@
         width: 100% !important;
         height: 100% !important;
      }
-     .wraper { height: 600px !important; }
+     
+     .wraper_nav { height: var(--wraper-nav-height) !important;overflow: auto; }
+     .wraper_min { height: var(--wraper-min) !important; }
+     .wraper_max { height: var(--wraper-max) !important; }
      .height_50px { height: 50px !important; }
      .height_550px { height: 550px !important; }
+     
+     .pickup_image {
+        border: 1px solid lightgray !important;
+        border-radius: 8px !important;
+     }
+     .mx_width_98P {
+        max-width: 98% !important;
+     }
   </style>
   
 </head>
 <body>
-
+<!-- best ux for selectors click on cell then select image or object for better nav smoother image first,  then select actionif need and asign it with selecto mode then draw whjen select on canvas with 4 points also each object when clicked have it actions tiles select later lvl monster if reached may diffrent actions-->
+<!-- add selector map (square_select, line_select) -->
 <div class="container-fluid w-100 p-0 m-0">
   <div class="row w-100 h-100 m-0 p-0">
     <div class="col-sm-4 h-100 border border-secondary p-0 m-0">
-      <div class="wraper" style="height:600px;">
+      <div class="wraper_max" style="height:600px;">
         <div id="side_nav_main" class="bg-dark w-100 height_50px">
           <div class="m-auto d-flex justify-content-start align-items-center p-2" style="max-width:fit-content;">
-            <div class="nav_item btn btn-outline-light btn-sm rounded mr-1 aside_link" data-target="#sqaures_pickup">Tiles</div>
+            <div class="nav_item btn btn-outline-light btn-sm rounded mr-1 aside_link" data-target="#tiles_pickup">Tiles</div>
             <div class="nav_item btn btn-outline-light btn-sm rounded aside_link" data-target="#objects_pickup">Objects</div>
           </div>
         </div>
         <div id="side_pages" class="height_550px">
-            <div id="sqaures_pickup" class="w-100 h-100 p-3 border border-secondary h-100 aside_page">Tiles Images</div>
-            <div id="objects_pickup" class="w-100 h-100 p-3 aside_page" style="display:none;">Objects Images</div>
+            <div id="tiles_pickup" class="w-100 h-100 aside_page" style="overflow:auto;"></div>
+            <div id="objects_pickup" class="w-100 h-100 aside_page" style="display:none;overflow:auto;"></div>
         </div>
       </div>
     </div>
     <div class="col-sm-8 border border-secondary p-0 m-0">
-      <div class="wraper">
+      <div id="actions_cont" class="wraper_nav">
+         Actions
+      </div>
+      <div class="wraper_min">
         <canvas id="myCanvas" style="width:100%;height:100%;"> Sorry, your browser does not support canvas. </canvas>
       </div>
     </div>
@@ -102,30 +126,58 @@
 <script>
 
 class MapMaker {    
-	constructor(selector, cSize = 25, mapSqaures = []) {
-        const canvasElm = (selector) ? $(selector) : [];
-        if (canvasElm.length && !isNaN(parseFloat(cSize)) && Array.isArray(mapSqaures)) {
-            this.selector = selector;
+	constructor(selectors, cSize = 25, mapData = {}) {
+        const canvasElm = (typeof(selectors) === 'object' &&  selectors.c) ? $(selectors.c) : [];
+        const tilesPickupElm = (typeof(selectors) === 'object' &&  selectors.tiles_pickup) ? $(selectors.tiles_pickup) : [];
+        const objectsPickupElm = (typeof(selectors) === 'object' &&  selectors.objects_pickup) ? $(selectors.objects_pickup) : [];
+        
+        if (canvasElm.length && tilesPickupElm.length && objectsPickupElm.length && !isNaN(parseFloat(cSize)) && typeof(mapData) === 'object' && Array.isArray(mapData.tiles) && Array.isArray(mapData.objects)) {
+            this.selectors = selectors;
             this.cSize = parseFloat(cSize);
             this.canvasElm = canvasElm;
+            this.tilesPickupElm = tilesPickupElm;
+            this.objectsPickupElm = objectsPickupElm;
+            
+            this.pickupConfig = {
+               contClass: 'p-1 d-flex justify-content-center align-items-start flex-wrap mx_width_98P m-auto',
+               imageBs: 'mb-1 mr-1',
+               imageWidth: '40',
+               imageHeight: '40'
+            }
+            
             this.ctx = this.canvasElm[0].getContext('2d');
-            this.mapSqaures = mapSqaures;
-            this.initMap();
-            this.addEvents();            
+            this.mapSquares = mapData;
+            this.initPages();
+            this.initMap();            
+            this.addEvents();
         } else {
-            throw 'Please  provide valid selector and numberic cSize and valid array of sqaures images';
+            throw 'Please  provide valid selector and numberic cSize and mapData obj and array of mapData.tiles and mapData.objects';
         }
 	}
-    get mapSquares() {
-        return this._mapSquares;
+    get tiles() {
+        return this._tiles;
+    }
+    get objects() {
+        return this._objects;
     }
     
-    set mapSquares(mapSqaures) {
-        if (Array.isArray(mapSqaures)) {
-            this._mapSqaures = Array.from(mapSqaures.filter((x)=>(typeof(x) === 'string' && x.trim() !== '')));
+    set mapSquares(mapData) {
+        if (typeof(mapData) === 'object' && Array.isArray(mapData.tiles) && Array.isArray(mapData.objects)) {
+            this._tiles = Array.from(mapData.tiles.filter((x)=>(typeof(x) === 'string' && x.trim() !== '')));
+            this._objects = Array.from(mapData.objects.filter((x)=>(typeof(x) === 'string' && x.trim() !== '')));
         } else {
             throw 'Error Invalid mapSqaures code updated...';
         }
+    }
+    displayAsidePage(e) {
+       const clickedLink = ((e && e.currentTarget) ? $(e.currentTarget) : []);
+       if (clickedLink.length && clickedLink.attr('data-target')) {
+           const target = $(clickedLink.attr('data-target')); 
+           if (target.length) {
+              $("#side_pages .aside_page").hide();
+              target.show();
+           }
+       }
     }
 	setMapData() {
 		const data = {};
@@ -173,15 +225,33 @@ class MapMaker {
 		this.ctx.stroke();
         console.log(`cells are ${this.rowCellsCount}`);
 	}
-    displayAsidePage(e) {
-       const clickedLink = ((e && e.currentTarget) ? $(e.currentTarget) : []);
-       if (clickedLink.length && clickedLink.attr('data-target')) {
-           const target = $(clickedLink.attr('data-target')); 
-           if (target.length) {
-              $("#side_pages .aside_page").hide();
-              target.show();
-           }
-       }
+    displayAsideTiles() {
+        if (Array.isArray(this.tiles) && this.tilesPickupElm.length) {
+             let html = `<div class="${this.pickupConfig.contClass}">`;
+             this.tiles.forEach((tileSrc)=>{
+                html += `<img class="pickup_image tile ${this.pickupConfig.imageBs}" width="${this.pickupConfig.imageWidth}" height="${this.pickupConfig.imageHeight}" src="${tileSrc}" alt="Sqaure later add info db for screen readers" />`;
+             });
+             html += '</div>';
+             this.tilesPickupElm.html(html);
+        } else {
+             throw `this.tiles or this.tilesPickupElm unkown ${this.tiles} - ${this.tilesPickupElm}`;
+        }
+    }
+    displayAsideObjects() {
+        if (Array.isArray(this.objects) && this.objectsPickupElm.length) {
+             let html = `<div class="${this.pickupConfig.contClass}">`;
+             this.objects.forEach((objectSrc)=>{
+                html += `<img class="pickup_image object ${this.pickupConfig.imageBs}" width="${this.pickupConfig.imageWidth}" height="${this.pickupConfig.imageHeight}" src="${objectSrc}" alt="Sqaure later add info db for screen readers" />`;
+             });
+             html += '</div>';
+             this.objectsPickupElm.html(html);
+        } else {
+             throw "this.objects or this.objectsPickupElm unkown";
+        }
+    }
+    initPages() {
+       this.displayAsideTiles();
+       this.displayAsideObjects();
     }
     addEvents() {
         $("#side_nav_main .aside_link").on('click', (e)=>{
@@ -195,7 +265,7 @@ class MapMaker {
 }
 
 
-new MapMaker("#myCanvas", 40, mapSquaresJSONDB);
+new MapMaker({c: "#myCanvas", tiles_pickup: "#tiles_pickup", objects_pickup: "#objects_pickup"}, 40, dbData);
 
 </script>
 
